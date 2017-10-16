@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Day from './Day'
-import {toNextMonth} from '../../store/action/CalendarAction'
+import {toNextMonth, toCurrentMonth, toPreviousMonth} from '../../store/action/CalendarAction'
 
 class CalendarHolder extends React.Component{
-
+	componentDidMount(){
+		this.props.onCurrentMonth();
+	}
 	render(){
 		const days = [];
 		const monthName = this.props.calendar.month;
@@ -18,10 +20,17 @@ class CalendarHolder extends React.Component{
 				<div className = "panel panel-success" style={{ margin: 'auto', width: '500px' }}>
 					<div className="panel-heading">{monthName}
 						<div className="pull-right">
-							<button className="btn btn-success btn-xs" style={{ marginRight: '5px' }}>
-								<span className="glyphicon glyphicon-chevron-left"></span></button>
-							<button className="btn btn-success btn-xs" onClick={this.props.onNextMonth}>
-								<span className="glyphicon glyphicon-chevron-right"></span></button>
+							<button className="btn btn-success btn-xs" 
+								onClick={()=>{this.props.onPreviousMonth(this.props.calendar.id)}} 
+								style={{ marginRight: '5px' }}>
+								<span className="glyphicon glyphicon-chevron-left"></span>
+							</button>
+
+							<button className="btn btn-success btn-xs" 
+									onClick={()=>this.props.onNextMonth(this.props.calendar.id)}>
+								<span className="glyphicon glyphicon-chevron-right"></span>
+							</button>
+
 						</div>
 					</div>
 					<div className="panel-body">
@@ -38,7 +47,15 @@ export default connect(
 		}),
 		dispatch=>({
 			onNextMonth: (id)=>{
-				dispatch(toNextMonth());
+				dispatch(toNextMonth(id));
+			}, 
+
+			onPreviousMonth: (id)=>{
+				dispatch(toPreviousMonth(id));
+			},
+
+			onCurrentMonth: ()=>{
+					dispatch(toCurrentMonth());
 			}
 		})
 	)(CalendarHolder);
