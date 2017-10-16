@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class Day extends React.Component{
 
@@ -16,11 +17,19 @@ class Day extends React.Component{
 				<div className="col-md-2" style={{ border: '1px solid white', height: '43px', 
 					backgroundColor: color, border: '1px solid white'  }}>	
 					<p style={{ fontSize:'20px', textAlign:'center', color: 'white'}}>
-							<a style={{ color: 'white' }}>{day.date}</a></p>
+							<a onClick={()=>this.props.onShow(day)} style={{ color: 'white' }}>{day.date}</a></p>
 					{info}
 				</div>
 			)
 	}
 }
 
-export default Day;
+export default connect(
+		state=>({}),
+		dispatch=>({
+			onShow: (day)=>{
+				console.log('in Day ERROR');
+				 dispatch({type:"DAY_SHOW", day:"Sdcsdc"})
+			}
+		})
+	)(Day);

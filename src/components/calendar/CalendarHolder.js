@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { toCurrentMonth} from '../../store/action/CalendarAction'
 import Day from './Day'
-import {toNextMonth, toCurrentMonth, toPreviousMonth} from '../../store/action/CalendarAction'
+import CalendarHeading from './CalendarHeading'
+import Show from './Show'
+
 
 class CalendarHolder extends React.Component{
 	componentDidMount(){
@@ -9,33 +12,25 @@ class CalendarHolder extends React.Component{
 	}
 	render(){
 		const days = [];
-		const monthName = this.props.calendar.month;
 		const monthDays = this.props.calendar.days;
-
+		const month = {
+					name: this.props.calendar.month,
+					id: this.props.calendar.id
+				}
 		monthDays.map((day, index)=>{
 				days.push(<Day key={index.toString()} day={day}/>);
 		});
 
 		return(
-				<div className = "panel panel-success" style={{ margin: 'auto', width: '500px' }}>
-					<div className="panel-heading">{monthName}
-						<div className="pull-right">
-							<button className="btn btn-success btn-xs" 
-								onClick={()=>{this.props.onPreviousMonth(this.props.calendar.id)}} 
-								style={{ marginRight: '5px' }}>
-								<span className="glyphicon glyphicon-chevron-left"></span>
-							</button>
-
-							<button className="btn btn-success btn-xs" 
-									onClick={()=>this.props.onNextMonth(this.props.calendar.id)}>
-								<span className="glyphicon glyphicon-chevron-right"></span>
-							</button>
-
+				<div  style={{ margin: 'auto', width: '500px' }}>
+						<div className = "panel panel-success" style={{width: '500px' }}>
+							<CalendarHeading month = {month}/>
+							<div className="panel-body">
+								{days}
+							</div>
 						</div>
-					</div>
-					<div className="panel-body">
-						{days}
-					</div>
+
+						<Show/>
 				</div>
 			)
 	}
@@ -46,14 +41,6 @@ export default connect(
 			calendar: state.Calendar
 		}),
 		dispatch=>({
-			onNextMonth: (id)=>{
-				dispatch(toNextMonth(id));
-			}, 
-
-			onPreviousMonth: (id)=>{
-				dispatch(toPreviousMonth(id));
-			},
-
 			onCurrentMonth: ()=>{
 					dispatch(toCurrentMonth());
 			}
