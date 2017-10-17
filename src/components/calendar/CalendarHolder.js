@@ -18,12 +18,12 @@ class CalendarHolder extends React.Component{
 					id: this.props.calendar.id
 				}
 		monthDays.map((day, index)=>{
-				days.push(<Day key={index.toString()} day={day}/>);
+				days.push(<Day key={index.toString()} month={month} day={day}/>);
 		});
 
 		return(
-				<div  style={{ margin: 'auto', width: '500px' }}>
-						<div className = "panel panel-success" style={{width: '500px' }}>
+				<div  style={ style.holder }>
+						<div className = "panel panel-success" style={style.panelHolder}>
 							<CalendarHeading month = {month}/>
 							<div className="panel-body">
 								{days}
@@ -46,3 +46,16 @@ export default connect(
 			}
 		})
 	)(CalendarHolder);
+
+
+	const style = {
+		holder: {
+			margin: 'auto',
+			width: '700px' ,
+			boxShadow: '0px 0px 55px -9px rgba(0,0,0,0.75)'
+		},
+		panelHolder: {
+			border: '0px solid white',
+			width: '700px' 
+		}
+	}

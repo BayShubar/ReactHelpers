@@ -35,3 +35,9 @@ export const toCurrentMonth = ()=>dispatch=>{
 			});
 	},500);
 }
+
+export const toShow = (day) =>dispatch=>{
+	setTimeout(()=>{
+		dispatch({type:"DAY_SHOW", day: day});
+	},1000);
+}
