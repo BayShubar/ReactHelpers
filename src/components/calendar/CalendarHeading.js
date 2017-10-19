@@ -49,11 +49,6 @@ export default connect(
 			border: '1px solid white',
 			borderBottom: '10px solid #FF5A5F'
 		},
-		headingBtn: {
-			float: 'right',
-			display: "inline-block",
-			marginTop: '25px'
-		},
 		headingMonth: {
 			display: "inline-block",
 			color: '#FF5A5F',
@@ -62,7 +57,6 @@ export default connect(
 	    fontWeight: '100',
 	    marginBottom: '10px',
 	    fontFamily:"Roboto, sans-serif",
-
 		},
 		moveBtn: {
 			backgroundColor: 'white',
@@ -70,5 +64,10 @@ export default connect(
 			borderRadius: '5px',
 			padding: '3px 20px',
 			color: '#FF5A5F'
-		}
+		},
+		headingBtn: {
+			float: 'right',
+			display: "inline-block",
+			marginTop: '25px'
+		},
 	}

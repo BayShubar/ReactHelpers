@@ -419,5 +419,4 @@ export const year = [
 			{date: '29', city: "Taraz", empty: false},
 		]
 	}
-
 ]

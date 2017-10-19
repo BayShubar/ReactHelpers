@@ -19,7 +19,7 @@ class Day extends React.Component{
 				<div className="col-md-2" style={style.dayHolder} onClick={()=>this.props.onShow(toDetailShow)}>	
 					<p style={style.dayDate}>
 							<a>
-								<span class="badge" style={{ backgroundColor:color.back, color: color.text}}>
+								<span className="badge" style={{ backgroundColor:color.back, color: color.text}}>
 									<p style={style.dayDate}>{day.date}</p></span>
 							</a>
 					</p>

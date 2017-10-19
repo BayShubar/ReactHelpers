@@ -1,4 +1,4 @@
-import { year } from '../YearData.js'
+import { year } from '../data/year.js'
 
 export const toNextMonth = (id)=>dispatch=>{
 		setTimeout(()=>{
