@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {toAccept} from '../../store/action/OrdersAction.js'
+import {toCancile, toAccept} from '../../store/action/OrdersAction.js'
 
 class Order extends React.Component{
 
@@ -13,11 +13,11 @@ class Order extends React.Component{
 						<h6 style={style.textDate}>{ order.date }</h6>
 					</div>
 							<div style={style.headingBtn}>
-									<button style={ style.decisionBtn }>
+									<button style={ style.decisionBtn } onClick={()=>{this.props.onClickAccept(order.id)}}>
 										Accept <span className="glyphicon glyphicon-ok"></span>
 									</button>
 
-									<button style={ style.decisionBtn } onClick={()=>{this.props.onClickAccept(order.id)}} >
+									<button style={ style.decisionBtn } onClick={()=>{this.props.onClickCancile(order.id)}} >
 										Cancil <span className="glyphicon glyphicon-remove"></span>
 									</button>
 
@@ -30,8 +30,11 @@ class Order extends React.Component{
 export default connect(
 		state =>({}),
 		dispatch =>({
+			onClickCancile: (id)=>{
+				dispatch(toCancile(id));
+			},
 			onClickAccept: (id)=>{
-				dispatch(toAccept(id));
+				dispatch(toAccept(id))
 			}
 		})
 	)(Order);
