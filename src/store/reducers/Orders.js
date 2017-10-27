@@ -23,6 +23,18 @@ export default function Orders(state = initialState, action){
 				return [
 					...state
 				];
+		case 'ORDER_ADD_OFFER':
+			let order = {
+				id: state.length+1,
+				user: action.order.user,
+				city: action.order.city,
+				money: action.order.money,
+				date: action.order.date,
+			}
+				return [
+					...state, order
+				];
+
 
 		default: 
 			return state;

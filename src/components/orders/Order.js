@@ -9,7 +9,7 @@ class Order extends React.Component{
 		return(
 				<div style={style.order}>
 					<div style={ style.infoHolder }>
-						<p style={ style.textInfo }><b>{ order.user }</b>  ({ order.money })</p><br/>
+						<p style={ style.textInfo }><b>{ order.user }</b>  $({ order.money })</p><br/>
 						<h6 style={style.textDate}>{ order.date }</h6>
 					</div>
 							<div style={style.headingBtn}>

@@ -10,7 +10,7 @@ export const toNextMonth = (id)=>dispatch=>{
 				if(month.id == nextId)
 					dispatch({type:"NEXT-MONTH", month:month})
 			});
-		},500);
+		},100);
 }
 
 export const toPreviousMonth = (id)=>dispatch=>{
@@ -23,7 +23,7 @@ export const toPreviousMonth = (id)=>dispatch=>{
 				if(month.id == prevId)
 					dispatch({type:"NEXT-MONTH", month:month})
 			});
-		},500);
+		},100);
 }
 
 export const toCurrentMonth = ()=>dispatch=>{
@@ -33,11 +33,11 @@ export const toCurrentMonth = ()=>dispatch=>{
 				if(month.id == currentMonth)
 					dispatch({type:"CURRENT-MONTH", month:month})
 			});
-	},500);
+	},100);
 }
 
 export const toShow = (day) =>dispatch=>{
 	setTimeout(()=>{
 		dispatch({type:"DAY_SHOW", day: day});
-	},1000);
+	},100);
 }

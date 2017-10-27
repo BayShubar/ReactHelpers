@@ -3,7 +3,7 @@ import { orders } from '../data/orders'
 export const toInitialLoad = ()=>dispatch=>{
 	setTimeout(()=>{
 		dispatch({ type:"ORDER_ADD", order: orders });
-	}, 500)
+	}, 100)
 }
 
 export const toCancile = (id)=>dispatch=>{
@@ -15,5 +15,11 @@ export const toCancile = (id)=>dispatch=>{
 export const toAccept = (id)=>dispatch=>{
 	setTimeout(()=>{
 		dispatch({ type: "ORDER_ACCEPT", order: id })
-	}, 200);
+	}, 100);
+}
+
+export const toAdd = (data)=>dispatch=>{
+	setTimeout(()=>{
+		dispatch({type: "ORDER_ADD_OFFER", order:data})
+	}, 100);
 }
